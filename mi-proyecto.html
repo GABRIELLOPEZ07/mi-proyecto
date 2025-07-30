@@ -27,7 +27,7 @@
         </table>
         <hr class="white-line">
 
-        <form name="salondefiestas">
+        <form id="salondefiestas" name="salondefiestas">
             <table class="form-table">
                 <tr>
                     <td class="form-section">
@@ -47,7 +47,7 @@
                         </select>
 
                         <h2 class="section-title">FECHA DEL EVENTO</h2>
-                        <input type="date" name="fechev" min="2024-01-01" max="2024-12-31" onchange="XYZ();">
+                        <input type="date" name="fechev" min="2025-01-01" max="2026-12-31" onchange="XYZ();">
 
                         <h2 class="section-title">HORARIO DEL EVENTO</h2>
                         <input type="time" name="horhev" value="13:00" min="13:00" max="21:00" step="3600" onchange="XYZ();">
@@ -62,11 +62,11 @@
                     <td class="form-section">
                         <h2 class="section-title">TIPO DE ALIMENTO</h2>
                         <div class="food-options">
-                            <label><input type="radio" name="cotind" onclick="XYZ();"> Taquitos al vapor 25.00</label><br>
-                            <label><input type="radio" name="cotind" onclick="XYZ();"> Hotdog 30.00</label><br>
-                            <label><input type="radio" name="cotind" onclick="XYZ();"> Chilidog 35.00</label><br>
-                            <label><input type="radio" name="cotind" onclick="XYZ();"> Marinitas 35.00</label><br>
-                            <label><input type="radio" name="cotind" onclick="XYZ();"> Hamburguesas 40.00</label><br>
+                            <label><input type="radio" name="cotind" value="taquitos al vapor" onclick="XYZ();"> Taquitos al vapor 25.00</label><br>
+                            <label><input type="radio" name="cotind" value="hotdog" onclick="XYZ();"> Hotdog 30.00</label><br>
+                            <label><input type="radio" name="cotind" value="chilidog" onclick="XYZ();"> Chilidog 35.00</label><br>
+                            <label><input type="radio" name="cotind" value="marinitas" onclick="XYZ();"> Marinitas 35.00</label><br>
+                            <label><input type="radio" name="cotind" value="hamburguesas" onclick="XYZ();"> Hamburguesas 40.00</label><br>
                         </div>
                         <p class="warning-text">
                             En cualquier evento se prohíbe el consumo de bebidas alcohólicas y humo de cigarro.
@@ -82,12 +82,12 @@
                             La renta incluye invitaciones, botana, aguas frescas y anfitriones.
                         </p>
                         <div class="extra-options">
-                            <label><input type="checkbox" name="extra1" onclick="XYZ();"> Botargas 500.00</label><br>
-                            <label><input type="checkbox" name="extra2" onclick="XYZ();"> Show infantil (temático) 1000.00</label><br>
-                            <label><input type="checkbox" name="extra3" onclick="XYZ();"> Piñata 500.00</label><br>
-                            <label><input type="checkbox" name="extra4" onclick="XYZ();"> Bolsitas de dulces 20.00 p/p</label><br>
-                            <label><input type="checkbox" name="extra5" onclick="XYZ();"> Refrescos 20.00 p/p</label><br>
-                            <label><input type="checkbox" name="extra6" onclick="XYZ();"> Pastel 10.00 p/p</label><br>
+                            <label><input type="checkbox" name="extra1" value="botargas(500.00)" onclick="XYZ();"> Botargas 500.00</label><br>
+                            <label><input type="checkbox" name="extra2" value="tematico(1000.00)" onclick="XYZ();"> Show infantil (temático) 1000.00</label><br>
+                            <label><input type="checkbox" name="extra3" value="piñata(500.00)" onclick="XYZ();"> Piñata 500.00</label><br>
+                            <label><input type="checkbox" name="extra4" value="bolsitas de dulces(20.00)" onclick="XYZ();"> Bolsitas de dulces 20.00 p/p</label><br>
+                            <label><input type="checkbox" name="extra5" value="refrescos(20.00)" onclick="XYZ();"> Refrescos 20.00 p/p</label><br>
+                            <label><input type="checkbox" name="extra6" value="pastel(10.00)" onclick="XYZ();"> Pastel 10.00 p/p</label><br>
                         </div>
                         <p class="info-text">
                             Los costos de refresco, pastel y bolsitas se calculan según el número de personas.
@@ -101,5 +101,67 @@
         </form>
         <hr class="white-line">
     </center>
+    <script>
+     var formulario = document.getElementById("salondefiestas");
+      //alert("hola mundo estoy en java");
+    
+      function XYZ() {
+    var total = 0;
+
+    var numInvitados = parseInt(formulario.numinv.value);
+    var precioAlimento = 0;
+
+    // Obtener precio según tipo de alimento
+    switch (formulario.cotind.value) {
+        case "taquitos al vapor":
+            precioAlimento = 25;
+            break;
+        case "hotdog":
+            precioAlimento = 30;
+            break;
+        case "chilidog":
+            precioAlimento = 35;
+            break;
+        case "marinitas":
+            precioAlimento = 35;
+            break;
+        case "hamburguesas":
+            precioAlimento = 40;
+            break;
+    }
+
+    // Sumar alimento * número de personas
+    total += precioAlimento * numInvitados;
+
+    // Servicios adicionales fijos
+    if (formulario.extra1.checked) total += 500; // Botargas
+    if (formulario.extra2.checked) total += 1000; // Show infantil
+    if (formulario.extra3.checked) total += 500; // Piñata
+
+    // Servicios por persona
+    if (formulario.extra4.checked) total += 20 * numInvitados; // Bolsitas
+    if (formulario.extra5.checked) total += 20 * numInvitados; // Refrescos
+    if (formulario.extra6.checked) total += 10 * numInvitados; // Pastel
+
+    // Obtener día para aplicar descuento (lunes=1, martes=2, ..., domingo=0)
+    var fechafiesta = new Date(formulario.fechev.value);
+    var diaSemana = fechafiesta.getDay(); // 0=domingo, 1=lunes, ..., 6=sábado
+
+    // Aplicar descuento del 20% si es de lunes a jueves (1 a 4)
+    if (diaSemana >= 1 && diaSemana <= 4) {
+        total *= 0.8;
+    }
+
+    // Verificar hora para aumento del 15% si es después de las 16:00
+    var horaEvento = parseInt(formulario.horhev.value.split(":")[0]);
+    if (horaEvento >= 16) {
+        total *= 1.15;
+    }
+
+    // Mostrar total
+    formulario.totcot.value = "$" + total.toFixed(2);
+}
+       
+    </script>
 </body>
 </html>
