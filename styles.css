@@ -1,0 +1,89 @@
+body.body-bg {
+    background-color: purple;
+    font-family: Arial, sans-serif;
+}
+
+.white-line {
+    border-color: white;
+    border-width: 3px;
+}
+
+.main-table {
+    width: 80%;
+    background-color: skyblue;
+}
+
+.left-column,
+.right-column {
+    text-align: center;
+}
+
+.logo-img {
+    width: 40%;
+}
+
+.event-types {
+    color: purple;
+    font-family: 'Arial Black';
+    font-size: 16px;
+}
+
+.marquee-bar {
+    background-color: skyblue;
+}
+
+.party-icon {
+    width: 10%;
+}
+
+.salon-img {
+    width: 95%;
+}
+
+.form-table {
+    width: 80%;
+    background-color: skyblue;
+}
+
+.form-section {
+    width: 30%;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.section-title {
+    color: purple;
+    font-family: 'Arial Black';
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.input-label {
+    font-size: 16px;
+    color: black;
+    display: block;
+    margin-top: 10px;
+}
+
+.food-options,
+.extra-options {
+    font-size: 14px;
+}
+
+.warning-text {
+    color: purple;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.info-text {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.total-label {
+    color: white;
+    font-family: 'Arial Black';
+    font-size: 18px;
+}

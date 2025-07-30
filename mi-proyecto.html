@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Salón de Fiestas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="body-bg">
+    <hr class="white-line">
+    <center>
+        <table class="main-table">
+            <tr>
+                <td class="left-column">
+                    <img src="salonfiesta.png" class="logo-img">
+                    <p class="event-types">Cumpleaños - Bautizos - Primeras comuniones - Graduaciones - Posadas</p>
+                    <marquee class="marquee-bar">
+                        <img src="salon.jpeg" class="party-icon">
+                        <img src="sfe.jpeg" class="party-icon">
+                        <img src="ss.jpeg" class="party-icon">
+                        
+                    </marquee>
+                </td>
+                <td class="right-column">
+                    <img src="imagenes/salonfiestas.jpg" class="salon-img">
+                </td>
+            </tr>
+        </table>
+        <hr class="white-line">
+
+        <form name="salondefiestas">
+            <table class="form-table">
+                <tr>
+                    <td class="form-section">
+                        <h2 class="section-title">DATOS DEL CLIENTE</h2>
+                        <label class="input-label">Nombre:</label>
+                        <input type="text" name="nom" size="30"><br>
+                        <label class="input-label">Teléfono:</label>
+                        <input type="text" name="tel" size="15"><br>
+
+                        <h2 class="section-title">NÚMERO DE INVITADOS</h2>
+                        <select name="numinv" onchange="XYZ();">
+                            <option value="40">40 personas</option>
+                            <option value="60">60 personas</option>
+                            <option value="80">80 personas</option>
+                            <option value="100">100 personas</option>
+                            <option value="120">120 personas</option>
+                        </select>
+
+                        <h2 class="section-title">FECHA DEL EVENTO</h2>
+                        <input type="date" name="fechev" min="2024-01-01" max="2024-12-31" onchange="XYZ();">
+
+                        <h2 class="section-title">HORARIO DEL EVENTO</h2>
+                        <input type="time" name="horhev" value="13:00" min="13:00" max="21:00" step="3600" onchange="XYZ();">
+
+                        <p class="info-text">
+                            De lunes a jueves se otorga un 20% de descuento.<br>
+                            Horarios después de las 4:00 pm aumentan un 15%.<br>
+                            <u>AGENDA 2024</u>
+                        </p>
+                    </td>
+
+                    <td class="form-section">
+                        <h2 class="section-title">TIPO DE ALIMENTO</h2>
+                        <div class="food-options">
+                            <label><input type="radio" name="cotind" onclick="XYZ();"> Taquitos al vapor 25.00</label><br>
+                            <label><input type="radio" name="cotind" onclick="XYZ();"> Hotdog 30.00</label><br>
+                            <label><input type="radio" name="cotind" onclick="XYZ();"> Chilidog 35.00</label><br>
+                            <label><input type="radio" name="cotind" onclick="XYZ();"> Marinitas 35.00</label><br>
+                            <label><input type="radio" name="cotind" onclick="XYZ();"> Hamburguesas 40.00</label><br>
+                        </div>
+                        <p class="warning-text">
+                            En cualquier evento se prohíbe el consumo de bebidas alcohólicas y humo de cigarro.
+                        </p>
+                        <p class="info-text">
+                            El cálculo de alimentación es por persona. Incluye solo agua de sabores.
+                        </p>
+                    </td>
+
+                    <td class="form-section">
+                        <h2 class="section-title">SERVICIOS EXTRAS</h2>
+                        <p class="info-text">
+                            La renta incluye invitaciones, botana, aguas frescas y anfitriones.
+                        </p>
+                        <div class="extra-options">
+                            <label><input type="checkbox" name="extra1" onclick="XYZ();"> Botargas 500.00</label><br>
+                            <label><input type="checkbox" name="extra2" onclick="XYZ();"> Show infantil (temático) 1000.00</label><br>
+                            <label><input type="checkbox" name="extra3" onclick="XYZ();"> Piñata 500.00</label><br>
+                            <label><input type="checkbox" name="extra4" onclick="XYZ();"> Bolsitas de dulces 20.00 p/p</label><br>
+                            <label><input type="checkbox" name="extra5" onclick="XYZ();"> Refrescos 20.00 p/p</label><br>
+                            <label><input type="checkbox" name="extra6" onclick="XYZ();"> Pastel 10.00 p/p</label><br>
+                        </div>
+                        <p class="info-text">
+                            Los costos de refresco, pastel y bolsitas se calculan según el número de personas.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            <p class="total-label">TOTAL DE LA COTIZACIÓN:</p>
+            <input type="text" name="totcot">
+        </form>
+        <hr class="white-line">
+    </center>
+</body>
+</html>
